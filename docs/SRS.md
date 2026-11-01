@@ -24,7 +24,7 @@ Um site de dieta feito para o dia a dia das pessoas que treinam ou apenas seguem
 - **RF08:** O usuário deve estar cadastrado e logado no site para ter persistência de seus dados.
 - **RF09:** O planejamento da dieta e a visualização dos resultados das calculadoras não precisam de autenticação do usuário e são perdidos ao fechar a página.
 - **RF10:** O projeto precisa seguir em conformidade a arquitetura RESTful em suas API.
-- **RF11:** Os endpoints não podem expor o ID do banco.
+- **RF11:** Os endpoints não podem expor o ID utilizado como primary key da tabela de users do banco, e sim utilizar uuid como id público.
 - **RF12:** A estrutura HTML deve conter validação de entrada do tipo de dados solicitado como primeira camada de segurança.
 - **RF13:** O back-end deve possuir uma camada extra de validação dos dados que entrarem pelo front-end.
 
