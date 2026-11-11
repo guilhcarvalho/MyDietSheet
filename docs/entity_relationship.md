@@ -1,7 +1,6 @@
 # Modelo de dados - Entity Relationship
 ```mermaid
 erDiagram
-    USER ||--o{ FOOD : " "
     FOOD ||--o{ FOOD_NUTRIENT: " "
     NUTRIENT ||--o{ FOOD_NUTRIENT: " "
     USER ||--o{ MEAL: " "
@@ -19,9 +18,8 @@ erDiagram
     }
     FOOD {
         int id PK
-        int user_id FK
-        string name "UK com user_id"
-        string meansure_unit
+        string name UK
+        string measure_unit
         double reference_quantity
     }
     NUTRIENT {
@@ -31,7 +29,7 @@ erDiagram
     }
     FOOD_NUTRIENT {
         int food_id PK, FK
-        int nutriend_id PK, FK
+        int nutrient_id PK, FK
         double value
     }
     MEAL {
@@ -41,8 +39,8 @@ erDiagram
     }
     MEAL_ITEM {
         int id PK
-        int meal_id FK
-        int food_id FK
+        int meal_id FK "UK"
+        int food_id FK "UK"
         double quantity
     }
     PLANNING {

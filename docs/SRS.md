@@ -14,19 +14,23 @@ Um site de dieta feito para o dia a dia das pessoas que treinam ou apenas seguem
 
 ## Requisitos funcionais
 
-- **RF01:** O usuário preencherá manualmente os campos de cada alimento para planejar uma refeição: nome do alimento, quantidade de kcal e quantidade de macronutrientes em 100g ou, dependendo do alimento, por unidade (opção de unidades escolhida pelo usuário).
-- **RF02:** Após o preenchimento manual das informações nutricionais contidas em 100g ou na unidade do alimento, o usuário deve informar a quantidade consumida de cada alimento em cada refeição. Em seguida, o sistema realizará um cálculo automático dos nutrientes totais de cada refeição.
-- **RF03:** O sistema exibirá o total de nutrientes de cada dia, atualizado conforme as refeições forem adicionadas ao planejamento.
-- **RF04:** Caso o usuário esteja logado, poderá salvar refeições para reutilizá-las no planejador de dieta. Uma refeição é um conjunto de alimentos com quantidades e pode ser associada a qualquer dia e horário.
-- **RF05:** O usuário deverá informar e-mail, nome de usuário e senha para se cadastrar com sucesso (e-mail posteriormente será usado para recuperação de conta), sendo obrigatório que e-mail e nome de usuário sejam dados únicos no banco de dados.
-- **RF06:** O usuário não utilizará de e-mail para realizar o login, e sim nome de usuário.
-- **RF07:** As senhas dos usuários precisam ser salvas com hash e exigência de senha forte, com a senha sendo composta por letras maiúsculas, minúsculas, números, caracteres especiais e tamanho mínimo de 8 caracteres.
-- **RF08:** O usuário deve estar cadastrado e logado no site para ter persistência de seus dados.
-- **RF09:** O planejamento da dieta e a visualização dos resultados das calculadoras não precisam de autenticação do usuário e são perdidos ao fechar a página.
-- **RF10:** O projeto precisa seguir em conformidade a arquitetura RESTful em suas API.
-- **RF11:** Os endpoints não podem expor o ID utilizado como primary key da tabela de users do banco, e sim utilizar uuid como id público.
-- **RF12:** A estrutura HTML deve conter validação de entrada do tipo de dados solicitado como primeira camada de segurança.
-- **RF13:** O back-end deve possuir uma camada extra de validação dos dados que entrarem pelo front-end.
+- **RF01:** O sistema terá como base de dados as informações da tabela TACO (Tabela Brasileira de Composição de Alimentos) na 4ª edição (2011).
+- **RF02:** Os dados da tabela TACO precisam estar disponíveis ao usuário para o planejamento das refeições, e os alimentos poderão ser pesquisados pelo nome.
+- **RF03:** O usuário deve informar a quantidade consumida, em gramas, de cada alimento em cada refeição que planejar. Como os valores nutricionais da TACO são expressos por 100 g de alimento, o sistema calculará automaticamente cada nutriente proporcionalmente à quantidade informada (valor por 100 g × quantidade em gramas ÷ 100) e somará os resultados para obter os nutrientes totais de cada refeição.
+- **RF04:** O sistema exibirá o total de nutrientes de cada dia, atualizado conforme as refeições forem adicionadas ao planejamento.
+- **RF05:** Caso o usuário esteja logado, poderá salvar refeições para reutilizá-las no planejador de dieta. Uma refeição é um conjunto de alimentos com quantidades e pode ser associada a qualquer dia e horário.
+- **RF06:** O usuário deverá informar e-mail, nome de usuário e senha para se cadastrar com sucesso (e-mail posteriormente será usado para recuperação de conta), sendo obrigatório que e-mail e nome de usuário sejam dados únicos no banco de dados.
+- **RF07:** O usuário não utilizará de e-mail para realizar o login, e sim nome de usuário.
+- **RF08:** As senhas dos usuários precisam ser salvas com hash e exigência de senha forte, com a senha sendo composta por letras maiúsculas, minúsculas, números, caracteres especiais e tamanho mínimo de 8 caracteres.
+- **RF09:** O usuário deve estar cadastrado e logado no site para ter persistência de seus dados.
+- **RF10:** O planejamento da dieta e a visualização dos resultados das calculadoras não precisam de autenticação do usuário e são perdidos ao fechar a página.
+- **RF11:** O projeto precisa seguir em conformidade a arquitetura RESTful em suas API.
+- **RF12:** Os endpoints não podem expor o ID utilizado como primary key da tabela de users do banco, e sim utilizar uuid como id público.
+- **RF13:** A estrutura HTML deve conter validação de entrada do tipo de dados solicitado como primeira camada de segurança.
+- **RF14:** O back-end deve possuir uma camada extra de validação dos dados que entrarem pelo front-end.
+- **RF15:** Os nutrientes serão preenchidos automaticamente ao selecionar o alimento e serão tratados apenas calorias e macronutrientes principais.
+- **RF16:** O site disponibilizará uma página para consulta e navegação dos alimentos da tabela TACO.
+- **RF17:** Um usuário só poderá visualizar, alterar e excluir as refeições salvas e o planejamento que lhe pertencem. Tentativas de acessar dados de outro usuário devem ser negadas.
 
 ## Requisitos não funcionais
 
@@ -40,7 +44,7 @@ Um site de dieta feito para o dia a dia das pessoas que treinam ou apenas seguem
 
 - Interface inicial com botões intuitivos para as funcionalidades do site.
 - Cadastro de usuários para persistência de dados.
-- Preenchimento de dados informando alimentos, calorias e macronutrientes em 100g ou unidades.
+- Consulta e busca de alimentos da TACO.
 - Calculadora de calorias e macronutrientes.
 - Interface de planejamento de refeições e dos dias e horários que cada refeição será consumida.
 - Salvamento de refeições para reutilização.
@@ -48,7 +52,6 @@ Um site de dieta feito para o dia a dia das pessoas que treinam ou apenas seguem
 ## Nice to have
 
 - Integração com WhatsApp enviando alarmes dos horários e refeições do dia.
-- API para pesquisa de alimentos e informações nutricionais.
 - Download de arquivo .txt contendo a dieta.
 - Recuperação de conta por e-mail.
 - Calculadora de custos da dieta.
