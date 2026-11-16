@@ -4,5 +4,5 @@ public class Nutrient
     public string Name { get; set; } = string.Empty;
     public string Unit { get; set; } = string.Empty;
 
-    public List<FoodNutrient> FoodNutrients { get; set; } = [];
+    public ICollection<FoodNutrient> FoodNutrients { get; set; } = [];
 }

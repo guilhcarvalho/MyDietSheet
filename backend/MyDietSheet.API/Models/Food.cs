@@ -5,6 +5,6 @@
 	public string MeansureUnit { get; set; } = string.Empty;
     public double ReferenceQuantity { get; set; }
 
-	public List<FoodNutrient> FoodNutrients {  get; set; }
+	public ICollection<FoodNutrient> FoodNutrients { get; set; } = [];
 
 }

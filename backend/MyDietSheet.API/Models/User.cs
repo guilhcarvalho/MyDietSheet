@@ -6,5 +6,5 @@ public class User
     public required string PasswordHash { get; set; }
     public Guid Uuid { get; set; } = Guid.NewGuid();
 
-    public List<Meal> Meals { get; set; } = [];
+    public ICollection<Meal> Meals { get; set; } = [];
 }
