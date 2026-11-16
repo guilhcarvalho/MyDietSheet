@@ -1,8 +1,22 @@
+using Microsoft.EntityFrameworkCore;
+using MyDietSheet.API.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
+
+string? connectionString = builder.Configuration.GetConnectionString("DbConnection");
+
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    throw new InvalidOperationException(
+        "'ConnectionStrings:DbConnection' is not defined. " +
+        "Set it via User Secrets (development) or environment variable (production).");
+}
+
+builder.Services.AddDbContext<MyDietSheetContext>(options => options.UseNpgsql(connectionString));
 
 var app = builder.Build();
 
